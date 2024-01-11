@@ -30,10 +30,16 @@ Add this repo's GitHub URL to one of the inputs.
 
 Just try compiling C/C++ codes with `-llabjackusb`.
 
-To use without installing:
+To use without installing, you can use [`nix develop`](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-develop.html):
 
 ```shell
 nix develop github:UlyssesZh/exodriver-flake
+```
+
+or [`nix-shell`](https://nixos.org/manual/nix/stable/command-ref/nix-shell.html):
+
+```shell
+nix-shell https://github.com/UlyssesZh/exodriver-flake/archive/master.tar.gz
 ```
 
 ## License

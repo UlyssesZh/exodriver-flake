@@ -1,13 +1,14 @@
 {
   description = "The official LabJack UD Linux and Mac OS X USB driver";
   inputs = {
+    flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     exodriver = {
       url = "github:labjack/exodriver/v2.7.0";
       flake = false;
     };
   };
-  outputs = { self, nixpkgs, exodriver }: let
+  outputs = { self, nixpkgs, exodriver, ... }: let
     version = "2.7.0";
     supportedSystems = [ "x86_64-linux" ];
     forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
