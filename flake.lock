@@ -1,0 +1,45 @@
+{
+  "nodes": {
+    "exodriver": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1673992919,
+        "narHash": "sha256-TLqwgyt/csx325r5q2sLD7oblZzI5B06zWtOTEUNMTk=",
+        "owner": "labjack",
+        "repo": "exodriver",
+        "rev": "0106af0d7157e9e5d1cc2b992d3d3aaf2215f5fb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "labjack",
+        "ref": "v2.7.0",
+        "repo": "exodriver",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1704722960,
+        "narHash": "sha256-mKGJ3sPsT6//s+Knglai5YflJUF2DGj7Ai6Ynopz0kI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "317484b1ead87b9c1b8ac5261a8d2dd748a0492d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "root": {
+      "inputs": {
+        "exodriver": "exodriver",
+        "nixpkgs": "nixpkgs"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
