@@ -7,28 +7,7 @@ to nixpkg on linux-x86_64
 I only ported to linux-x86_64 because I cannot test other platforms.
 Pull requests are welcome.
 
-## Installation
-
-### NixOS system configuration
-
-```nix
-{pkgs, ...}: let
-  exodriver = import (builtins.fetchTarball "https://github.com/UlyssesZh/exodriver-flake/archive/master.tar.gz");
-in {
-  # ...
-  environment.systemPackages = [ # or home.packages
-    exodriver.packages.exodriver
-  ];
-}
-```
-
-### Flake
-
-Add this repo's GitHub URL to one of the inputs.
-
 ## Usage
-
-Just try compiling C/C++ codes with `-llabjackusb`.
 
 To use without installing, you can use [`nix develop`](https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-develop.html):
 
@@ -39,7 +18,24 @@ nix develop github:UlyssesZh/exodriver-flake
 or [`nix-shell`](https://nixos.org/manual/nix/stable/command-ref/nix-shell.html):
 
 ```shell
-nix-shell https://github.com/UlyssesZh/exodriver-flake/archive/master.tar.gz
+nix-shell --expr 'import "${fetchTarball https://github.com/UlyssesZh/exodriver-flake/archive/master.tar.gz}/shell.nix"'
+```
+
+Now, just try compiling C/C++ codes with `-llabjackusb`.
+
+You may also add this flake as a dependency of other flakes.
+
+## Udev rules
+
+You may find adding udev rules by this snippet useful:
+
+```nix
+{ pkgs, ... }: let
+  exodriver-flake = import (fetchTarball https://github.com/UlyssesZh/exodriver-flake/archive/master.tar.gz);
+in {
+  # ...
+  services.udev.packages = [ exodriver-flake.packages.${pkgs.system}.exodriver ];
+}
 ```
 
 ## License
