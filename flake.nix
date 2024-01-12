@@ -19,7 +19,7 @@
         pname = "exodriver";
         inherit version;
         src = exodriver;
-        buildInputs = [ libusb1 ];
+        nativeBuildInputs = [ libusb1 ];
         buildPhase = ''
           cd liblabjackusb
           make clean
@@ -74,7 +74,7 @@
     devShell = forAllSystems (system: nixpkgsFor.${system}.mkShell (let
       exodriver = self.packages.${system}.exodriver;
     in rec {
-      buildInputs = [ exodriver ];
+      packages = [ exodriver ];
     }));
   };
 }
